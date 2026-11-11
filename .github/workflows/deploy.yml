@@ -40,6 +40,4 @@ jobs:
             **/*.sql
             **/error_log
             **/.github/**
-            **/msms/uploads/**
-            **/mjms/uploads/**
             **/hback/**
