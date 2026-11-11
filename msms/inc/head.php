@@ -71,6 +71,11 @@
 </script>
     
 
+<link rel="icon" type="image/x-icon" href="<?php echo SITE_URL;?>favicon.ico?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo SITE_URL;?>img/favicon.png?v=2">
+<link rel="shortcut icon" href="<?php echo SITE_URL;?>favicon.ico?v=2">
+<link rel="apple-touch-icon" href="<?php echo SITE_URL;?>img/favicon.png?v=2">
+
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL;?>css/msms.css" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL;?>css/fontawesome.css" media="all" />
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL;?>css/bootstrap.css" media="all" />

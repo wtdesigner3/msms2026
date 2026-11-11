@@ -6,6 +6,10 @@ on:
       - main
       - master
 
+concurrency:
+  group: cpanel-ftp-deploy
+  cancel-in-progress: true
+
 jobs:
   web-deploy:
     name: Sync to cPanel via FTP

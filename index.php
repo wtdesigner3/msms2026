@@ -16,6 +16,10 @@
     <title>Mahavir Senior Model School | Best School in North Delhi</title>
     <meta name="description" content="Mahavir Senior Model School is a premier CBSE-affiliated school in North Delhi offering quality education from Nursery to Senior Secondary."/>
     <meta name="keywords" content="Mahavir Senior Model School, MSMS, MJMS, best school in north delhi, schools for nursery admissions near me, top schools in north delhi"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png?v=2">
+    <link rel="shortcut icon" href="favicon.ico?v=2">
+    <link rel="apple-touch-icon" href="img/favicon.png?v=2">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" media="screen" type="text/css" href="css/style.css" />
     <style>
