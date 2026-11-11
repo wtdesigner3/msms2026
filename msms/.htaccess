@@ -1,0 +1,38 @@
+Options -Indexes
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^(www\.)(.*) [NC]
+RewriteRule (.*) https://%2%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=302,NE]
+
+Redirect /msms/page/online-admission https://msms.campuscare.info/
+Redirect /msms/page/schools-for-nursery-admission-in-delhi-4 https://msms.campuscare.info/
+
+RewriteRule ^school/([a-zA-Z0-9-/]+)$ page.php?p_url=$1  
+RewriteRule ^school/([a-zA-Z-0-9-]+)/ page.php?p_url=$1  
+
+RewriteRule ^page/([a-zA-Z0-9-/]+)$ pages.php?sub_url=$1  
+RewriteRule ^page/([a-zA-Z-0-9-]+)/ pages.php?sub_url=$1  
+
+RewriteRule ^pages/([a-zA-Z0-9-/]+)$ pagess.php?subm_url=$1  
+RewriteRule ^pages/([a-zA-Z-0-9-]+)/ pagess.php?subm_url=$1  
+
+RewriteRule ^news/([a-zA-Z0-9-/]+)$ news-and-events.php?ne_url=$1  
+RewriteRule ^news/([a-zA-Z-0-9-]+)/ news-and-events.php?ne_url=$1 
+
+RewriteRule ^msms-in-prints/([a-zA-Z0-9-/]+)$ msms-in-prints.php?ne_url=$1  
+RewriteRule ^msms-in-prints/([a-zA-Z-0-9-]+)/ msms-in-prints.php?ne_url=$1 
+
+RewriteRule ^event/([a-zA-Z0-9-/]+)$ upcoming-events.php?e_url=$1  
+RewriteRule ^event/([a-zA-Z-0-9-]+)/ upcoming-events.php?e_url=$1
+
+RewriteRule ^testimonials/([a-zA-Z0-9-/]+)$ testimonials.php?id=$1  
+RewriteRule ^testimonials/([a-zA-Z-0-9-]+)/ testimonials.php?id=$1
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule (.*) $1\.php [L]
+
+

@@ -1,0 +1,28 @@
+# Optional alternative: Deploy via SSH (Only if SSH/Shell access is enabled by your hosting provider)
+name: Deploy to cPanel Live Server via SSH
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to Live Server via SSH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            cd /home3/msmsdelhi/public_html
+            git config --global --add safe.directory /home3/msmsdelhi/public_html
+            git pull origin main

@@ -1,0 +1,32 @@
+# Ignore environment and local config overrides
+.env
+.env.local
+
+# Ignore sensitive database dumps and backup archives
+database_backups/
+*.sql
+*.zip
+*.tar.gz
+*.bak
+
+# Ignore server error logs and crash dumps
+error_log
+*/error_log
+*/*/error_log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+
+# User uploaded media (stored directly on server/backups, excluded from git repo to stay under GitHub limits)
+msms/uploads/*
+!msms/uploads/.htaccess
+mjms/uploads/*
+!mjms/uploads/.htaccess
+

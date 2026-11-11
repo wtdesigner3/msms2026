@@ -1,0 +1,62 @@
+
+@media only screen and (max-width: 760px) {
+    .section_mod-a__inner {
+    position: relative;
+    margin-top: 0!important;
+    }
+    .blue-wave {
+    display: unset!important;}
+    .isotope.three-collumn .item{
+        width:100%!important;
+    }
+    .time-modal .modal-dialog {
+    width: 358px !important;
+    margin: 30px auto;
+    top: 104px !important;
+}
+	.testimonial{width: 100%;}
+        .holder-bg.with-pattern { background: #192676; }
+        .counters-section { padding-top: 30px; padding-bottom: 30px;}
+        .abouts {position: relative; top:20px; bottom: 20px;}
+        .oneicon{ display: none; }
+        .pulsating-circle {
+             position: absolute;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            width: 15px;
+            height: 15px;
+            top: 22px;
+            left: -5px;
+        }
+        .color-blue {
+            color:#09357c;
+            display: inline-block;
+            position: relative;
+            font-size: 18px;
+            padding: 10px;
+            margin-left: 10px;
+        }
+        .twoicon { display: none; }
+        .news {
+            padding: 50px 0 0px;
+            background:#fff;
+            min-height: 500px;
+
+            }
+            .btn-theme-color-red { margin-bottom:40px; }
+            #content {float: none; width: 100%;}
+}
+
+@media only screen and (max-width: 770px) {
+    .section_mod-a__inner {
+    position: relative;
+    margin-top: 0;
+    }
+}
+/*Mobile Phone Styles */
+@media only screen and (max-width: 520px) {
+    .section_mod-a__inner {
+    position: relative;
+    margin-top: 0;
+    }
+}

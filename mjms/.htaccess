@@ -1,0 +1,39 @@
+Options -Indexes
+RewriteEngine On
+
+Redirect /mjms/page/online-admission https://msms.campuscare.info/
+Redirect /mjms/page/schools-for-nursery-admission-in-delhi https://msms.campuscare.info/
+
+ErrorDocument 404  https://msmsdelhi.in/mjms/404
+ErrorDocument 403  https://msmsdelhi.in/mjms/404
+
+RewriteRule ^school/([a-zA-Z0-9-/]+)$ page.php?p_url=$1  
+RewriteRule ^school/([a-zA-Z-0-9-]+)/ page.php?p_url=$1  
+
+RewriteRule ^page/([a-zA-Z0-9-/]+)$ pages.php?sub_url=$1  
+RewriteRule ^page/([a-zA-Z-0-9-]+)/ pages.php?sub_url=$1
+
+RewriteRule ^pages/([a-zA-Z0-9-/]+)$ pagess.php?subm_url=$1  
+RewriteRule ^pages/([a-zA-Z-0-9-]+)/ pagess.php?subm_url=$1  
+
+RewriteRule ^news/([a-zA-Z0-9-/]+)$ news-and-events.php?ne_url=$1  
+RewriteRule ^news/([a-zA-Z-0-9-]+)/ news-and-events.php?ne_url=$1  
+
+RewriteRule ^event/([a-zA-Z0-9-/]+)$ upcoming-events.php?e_url=$1  
+RewriteRule ^event/([a-zA-Z-0-9-]+)/ upcoming-events.php?e_url=$1
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule (.*) $1\.php [L]
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE] 
+
+<IfModule php_module>
+  php_value session.save_path "/home3/msmsdelhi/tmp"
+  php_value session.cookie_path "/"
+</IfModule>
+<IfModule lsapi_module>
+  php_value session.save_path "/home3/msmsdelhi/tmp"
+  php_value session.cookie_path "/"
+</IfModule>

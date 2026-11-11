@@ -1,0 +1,52 @@
+# ==============================================================================
+# Mahavir Senior & Junior Model School - Root Security & Hardening Configuration
+# ==============================================================================
+
+RewriteEngine On
+
+# 1. Force HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+# 2. Canonical Hostname (strip www)
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# 3. Disable Directory Browsing
+Options -Indexes -MultiViews
+
+# 4. Block access to sensitive files (database dumps, logs, ini files, backups, git, hidden files)
+<FilesMatch "(^#.*#|\.(sql|ini|log|bak|config|dist|fla|inc|sh|env|swp|dist)|~)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Block access to hidden files and directories (except .well-known for SSL verification)
+RewriteCond %{REQUEST_URI} !^/\.well-known
+RewriteRule (^|/)\.(?!well-known) - [F]
+
+# 5. Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# 6. Block malicious HTTP request methods
+<LimitExcept GET POST HEAD>
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</LimitExcept>
+
