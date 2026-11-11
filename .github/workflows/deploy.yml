@@ -16,13 +16,22 @@ jobs:
         with:
           fetch-depth: 2 # Incremental deployment: syncs only files changed in recent commits
 
+      - name: Resolve Server Directory
+        id: dir_step
+        run: |
+          DIR="${{ secrets.FTP_SERVER_DIR }}"
+          if [ -z "$DIR" ]; then
+            DIR="/"
+          fi
+          echo "target_dir=$DIR" >> $GITHUB_OUTPUT
+
       - name: Sync Files to Server via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/' }}
+          server-dir: ${{ steps.dir_step.outputs.target_dir }}
           dangerous-clean-slate: false
           exclude: |
             **/.git*
@@ -33,3 +42,4 @@ jobs:
             **/.github/**
             **/msms/uploads/**
             **/mjms/uploads/**
+            **/hback/**
